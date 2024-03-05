@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dstyles.css" />
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <title>Admin Panel</title>
+  </head>
+
+  <body>
+    <div class="side-menu">
+      <div class="mt-5"></div>
+      <!-- <h4>Airline Reservation System</h4> -->
+      <ul>
+        <li class="bi bi-grid-fill">
+          &nbsp; <span><a href="/api/cdashboard">Dashboard</a></span>
+        </li>
+        <li class="bi bi-people">
+          &nbsp;<span><a href="/api/bookticket">Book a ticket</a></span>
+        </li>
+        <li class="bi bi-building">
+          &nbsp;<span><a href="/api/cairlines">Available Airlines</a></span>
+        </li>
+        <!-- <li class="bi bi-airplane">&nbsp;<span><a href="/api/airplanes">Airplanes</a></span> </li> -->
+        <li class="bi bi-box-arrow-left">
+          &nbsp;<span><a href="/api/logout">Log out</a></span>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="header">
+        <div class="nav">
+          <div class="brand-name">
+            <h2>Airline Reservation System</h2>
+          </div>
+          <!-- <a href="#" class="btn">Search</a>&nbsp;&nbsp;
+                <a href="#" class="btn">Delete</a>&nbsp;&nbsp; -->
+          <div class="position-absolute top-0 end-0">
+            <div class="bi bi-people"></div>
+            <h4><%=data%></h4>
+          </div>
+          <!-- <div class="user position">
+                   
+                </div> -->
+        </div>
+      </div>
+      <div class="content">
+        <div class="content-2">
+          <div class="recent-payments mt-5">
+            <div class="title">
+              <h2>Airplanes</h2>
+            </div>
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Time</th>
+                <th>Price</th>
+                <th>Airline ID</th>
+              </tr>
+              <% if(companies1.length>0) { companies1.forEach(function(company){
+              %>
+              <tr>
+                <td><%= company.id%></td>
+                <td><%= company.name%></td>
+                <td><%= company.departure%></td>
+                <td><%= company.arrival%></td>
+                <td><%= company.time%></td>
+                <td><%= company.price%></td>
+                <td><%= company.airlineId%></td>
+              </tr>
+              <% }); } else { %>
+              <tr>
+                <td colspan="5">no data found</td>
+              </tr>
+              <% } %>
+            </table>
+          </div>
+
+          <div class="new-students mt-5">
+            <div class="title">
+              <h2>Airlines</h2>
+            </div>
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+              </tr>
+              <% if(companies2.length>0) { companies2.forEach(function(company){
+              %>
+              <tr>
+                <td><%= company.id%></td>
+                <td><%= company.name%></td>
+              </tr>
+              <% }); } else { %>
+              <tr>
+                <td colspan="5">no data found</td>
+              </tr>
+              <% } %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
